@@ -13,13 +13,21 @@ public class Main {
 
 
     public static void main(String[] arg) {
+        useSimpleFactory();
+
+    }
+
+    /**
+     * 设计模式——简单工厂模式实现
+     */
+    private static void useSimpleFactory() {
         Double number1, number2;
         String strOperation;
         System.out.print("请输入第一个数字：");
         number1 = Double.parseDouble(inputString());
         System.out.print("请输入运算符号：");
         strOperation = inputString();
-        Operation operation = OperationFactory.creatOperation(strOperation);
+        Operation operation = OperationFactory.creatOperation(strOperation);//简单工厂模式运用
         if (operation == null) {
             return;
         }
@@ -29,10 +37,14 @@ public class Main {
         operation.setmNumber1(number1);
         operation.setmNumber2(number2);
         System.out.println(number1 + " " + strOperation + " " + number2 + " = " + operation.GetResult());
-
     }
 
 
+    /**
+     * 输入数据
+     *
+     * @return
+     */
     private static String inputString() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();
